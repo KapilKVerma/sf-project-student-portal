@@ -1,0 +1,49 @@
+<template>
+  <lightning-layout>
+    <lightning-layout-item size="3">
+      <div style="width: 250px; height: 85vh">
+        <lightning-vertical-navigation selected-item={selectedNavItem}>
+          <lightning-vertical-navigation-section label="Student Dashboard">
+            <template for:each={navigationButtonsList} for:item="item">
+              <lightning-vertical-navigation-item-icon
+                key={item.key}
+                label={item.label}
+                name={item.name}
+                icon-name={item.iconName}
+                onclick={handleNavigation}
+              >
+              </lightning-vertical-navigation-item-icon>
+            </template>
+
+            <lightning-vertical-navigation-item-icon
+              label="Log Out"
+              name="logout"
+              icon-name="utility:logout"
+              onclick={handleLogout}
+            >
+            </lightning-vertical-navigation-item-icon>
+            <!-- <lightning-vertical-navigation-item-icon
+              label="Log In"
+              name="login"
+              icon-name="utility:open"
+              href="/login"
+            > -->
+            <!-- </lightning-vertical-navigation-item-icon> -->
+          </lightning-vertical-navigation-section>
+        </lightning-vertical-navigation>
+      </div></lightning-layout-item
+    >
+
+    <lightning-layout-item size="9" style="background-color: lightblue">
+      <template if:true={isDashboard}>
+        <c-enroll360-dashboard></c-enroll360-dashboard>
+      </template>
+      <template if:true={isProfile}>
+        <c-enroll360-profile></c-enroll360-profile>
+      </template>
+      <template if:true={isSettings}>
+        <c-enroll360-settings></c-enroll360-settings>
+      </template>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

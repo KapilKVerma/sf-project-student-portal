@@ -1,0 +1,47 @@
+<template>
+  <div class="slds-p-arround_medium">
+    <template if:true={showList}>
+      <!-- Tiles of Cars -->
+      <div class="slds-grid slds-wrap">
+        <!-- Iteration through cars list -->
+        <template for:each={carsList} for:item="car">
+          <!-- Individual car tile -->
+          <div class="slds-col slds-size_1-of-3" key={car.Id}>
+            <div
+              class="slds-m-around_xx-small"
+              style="
+                border: 0.5px solid rgb(217, 217, 217);
+                border-radius: 10px;
+              "
+            >
+              <lightning-card title={car.Name}>
+                <lightning-button-group slot="actions">
+                  <lightning-button
+                    label="Show details"
+                    name="show_details"
+                    data={car}
+                    onclick={handleTileAction}
+                  ></lightning-button>
+                  <lightning-button
+                    label="Delete"
+                    name="delete"
+                    data={car}
+                    onclick={handleTileAction}
+                  ></lightning-button>
+                </lightning-button-group>
+
+                <p class="slds-p-horizontal_small">
+                  {car.BodyType__c}<br />
+                  {car.Fuel__c}<br />
+                  {car.Transmission__c}<br />
+                  {car.Model_Year__c}<br />
+                  {car.Price__c}
+                </p>
+              </lightning-card>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+  </div>
+</template>

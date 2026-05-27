@@ -1,0 +1,18 @@
+<template>
+  <lightning-card title="All Leaves">
+    <div class="slds-m-around_medium">
+      <template if:true={showList}>
+        <!-- Data Table of Leaves -->
+        <div style="height: 400px">
+          <lightning-datatable
+            key-field="Id"
+            data={myLeaves}
+            columns={columns}
+            onrowaction={handleRowActions}
+          >
+          </lightning-datatable>
+        </div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

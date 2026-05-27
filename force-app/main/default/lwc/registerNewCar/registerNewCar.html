@@ -1,0 +1,149 @@
+<template>
+  <lightning-card>
+    <div class="slds-m-around_medium">
+      <lightning-progress-indicator
+        current-step={formStep}
+        type="base"
+        variant="base"
+        class="slds-m-around_medium"
+      >
+        <lightning-progress-step
+          label="Personal Information"
+          value="1"
+        ></lightning-progress-step>
+        <lightning-progress-step
+          label="Course Selection"
+          value="2"
+        ></lightning-progress-step>
+        <lightning-progress-step
+          label="Documents Upload"
+          value="3"
+        ></lightning-progress-step>
+        <lightning-progress-step
+          label="Review & Submit"
+          value="4"
+        ></lightning-progress-step>
+      </lightning-progress-indicator>
+
+      <template if:true={showFormStep1}>
+        <div class="slds-m-around_medium">
+          <lightning-input
+            type="text"
+            name="carName"
+            label="Enter Name"
+            value={carName}
+            onchange={handleChange}
+            class="slds-m-bottom_medium"
+            required
+          ></lightning-input>
+
+          <lightning-input
+            type="text"
+            name="carPrice"
+            label="Enter Price"
+            value={carPrice}
+            onchange={handleChange}
+            class="slds-m-bottom_medium"
+            required
+          ></lightning-input>
+        </div>
+      </template>
+
+      <template if:true={showFormStep2}>
+        <div class="slds-m-around_medium">
+          <lightning-combobox
+            name="carFuel"
+            label="Select Fuel"
+            placeholder="Select Fuel"
+            value={carFuel}
+            options={fuelOptions}
+            onchange={handleChange}
+            class="slds-m-bottom_medium"
+          ></lightning-combobox>
+
+          <lightning-combobox
+            name="carTransmission"
+            label="Select Transmission"
+            placeholder="Select Transmission"
+            value={carTransmission}
+            options={transmissionOptions}
+            onchange={handleChange}
+            class="slds-m-bottom_medium"
+          ></lightning-combobox>
+        </div>
+      </template>
+
+      <template if:true={showFormStep3}>
+        <div class="slds-m-around_medium">
+          <lightning-combobox
+            name="carModelYear"
+            label="Select Model Year"
+            placeholder="Select Model Year"
+            value={carModelYear}
+            options={modelYearOptions}
+            onchange={handleChange}
+            class="slds-m-bottom_medium"
+          ></lightning-combobox>
+
+          <lightning-combobox
+            name="carBodyType"
+            label="Select Body Type"
+            placeholder="Select Body Type"
+            value={carBodyType}
+            options={bodyTypeOptions}
+            onchange={handleChange}
+            class="slds-m-bottom_medium"
+          ></lightning-combobox>
+        </div>
+      </template>
+    </div>
+
+    <div slot="footer">
+      <template if:true={previousButton}>
+        <lightning-button
+          label="Previous"
+          class="slds-m-right_x-small"
+          icon-name="utility:chevronleft"
+          onclick={handlePreviousButton}
+        ></lightning-button>
+      </template>
+
+      <template if:true={nextButton}>
+        <lightning-button
+          label="Next"
+          class="slds-m-right_x-small"
+          icon-name="utility:chevronright"
+          icon-position="right"
+          onclick={handleNextButton}
+        ></lightning-button>
+      </template>
+
+      <template if:true={saveExitButton}>
+        <lightning-button
+          label="Save"
+          variant="success"
+          class="slds-m-right_x-small"
+          icon-name="utility:save"
+          onclick={handleSaveForm}
+        ></lightning-button>
+      </template>
+
+      <template if:true={cancelButton}>
+        <lightning-button
+          label="Cancel"
+          class="slds-m-right_x-small"
+          icon-name="utility:close"
+        ></lightning-button>
+      </template>
+
+      <template if:true={saveButton}>
+        <lightning-button
+          label="Submit"
+          variant="success"
+          icon-name="utility:case"
+          onclick={handleSubmit}
+        ></lightning-button>
+      </template>
+    </div>
+  </lightning-card>
+</template>

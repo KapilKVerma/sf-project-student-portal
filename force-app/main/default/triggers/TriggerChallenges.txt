@@ -1,0 +1,48 @@
+/* ==== Trigger Challenge Scenarios ==== */
+
+/* 
+  Scenario 1: When parent field is updated, then child field is updated.
+
+  Challenge 1: When an Account’s Phone field is updated, all 
+  related Contacts should have their Phone field updated to 
+  match the Account’s new phone. 
+
+  Challenge 2: Cascade Account status change to all open opportunities. 
+    
+*/
+
+/* 
+  Scenario 2: Stop parent record from deletion based on related child
+  record field value.
+
+  Challenge 1: Prevent deletion of Accounts if they have any related 
+  Opportunities that are NOT 'Closed Won'. 
+    
+*/
+
+/* 
+  Scenario 3: Copy parent record fields value to child field when new 
+  child record is created.
+
+  Challenge 1: Copy billing address from Account to Opportunity on insert. 
+    
+*/
+
+/* 
+  Scenario 4: Aggregate child records field values, and update the parent
+  record field value with that value.
+
+  Challenge 1: Roll-up total Opportunities Amount onto Account. 
+
+  Challenge 2: Count related Contacts on Account. 
+    
+*/
+
+/* 
+  Scenario 5: Validate child record field value based on parent record 
+  fiel value.
+
+  Challenge 1: Validate that Opportunity Amount does not exceed 
+  Account Credit Limit. 
+    
+*/

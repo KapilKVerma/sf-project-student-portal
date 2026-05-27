@@ -1,0 +1,93 @@
+<template>
+  <lightning-card>
+    <!-- Form -->
+    <!-- From Inputs -->
+    <lightning-input
+      type="text"
+      name="leaveName"
+      label="Enter Name"
+      onchange={handleChange}
+      required
+    ></lightning-input>
+
+    <div class="slds-grid slds-wrap slds-m-top_small">
+      <div class="slds-col slds-size_1-of-2">
+        <lightning-combobox
+          name="leaveType"
+          label="Leave Type"
+          placeholder="Select Leave Type"
+          options={typePicklistOptions}
+          onchange={handleChange}
+          class="slds-m-right_small"
+          required
+        ></lightning-combobox>
+      </div>
+      <div class="slds-col slds-size_1-of-2">
+        <lightning-combobox
+          name="leaveStatus"
+          label="Leave Status"
+          placeholder="Select Leave Status"
+          options={statusPicklistOptions}
+          onchange={handleChange}
+          required
+        ></lightning-combobox>
+      </div>
+    </div>
+
+    <div class="slds-grid slds-wrap slds-m-top_small">
+      <div class="slds-col slds-size_1-of-2">
+        <lightning-input
+          type="date"
+          name="leaveFromDate"
+          label="From"
+          onchange={handleChange}
+          class="slds-m-right_small"
+          required
+        ></lightning-input>
+      </div>
+      <div class="slds-col slds-size_1-of-2">
+        <lightning-input
+          type="date"
+          name="leaveToDate"
+          label="To"
+          onchange={handleChange}
+          required
+        ></lightning-input>
+      </div>
+    </div>
+
+    <lightning-textarea
+      name="leaveReason"
+      label="Leave Reason"
+      onchange={handleChange}
+      class="slds-m-top_small"
+      required
+    ></lightning-textarea>
+
+    <lightning-combobox
+      name="leaveEmployee"
+      label="Employee"
+      placeholder="Select Employee"
+      options={employeesList}
+      onchange={handleChange}
+      class="slds-m-top_small"
+      required
+    ></lightning-combobox>
+
+    <!-- Form Buttons -->
+    <div class="slds-m-top_medium slds-grid slds-grid_align-end">
+      <lightning-button
+        label="Reset"
+        variant="brand-outline"
+        class="slds-m-right_x-small"
+        onclick={resetForm}
+      ></lightning-button>
+
+      <lightning-button
+        label="Submit"
+        variant="brand"
+        onclick={handleSubmit}
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>

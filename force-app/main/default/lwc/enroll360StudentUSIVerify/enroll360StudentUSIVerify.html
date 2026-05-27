@@ -1,0 +1,26 @@
+<template>
+  <lightning-card title="Unique Student Identifier (USI)">
+    <div class="slds-p-horizontal_medium">
+      <p>{studentUSI}</p>
+    </div>
+
+    <div class="slds-p-around_medium">
+      <template if:false={studentUSIVerified}>
+        <lightning-button
+          label="Verify"
+          variant="brand"
+          onclick={handleVerfication}
+        ></lightning-button>
+      </template>
+
+      <template if:true={studentUSIVerified}>
+        <lightning-button
+          label="Verified"
+          variant="brand"
+          icon-name="utility:check"
+          disabled
+        ></lightning-button>
+      </template>
+    </div>
+  </lightning-card>
+</template>

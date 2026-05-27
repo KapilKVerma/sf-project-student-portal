@@ -1,0 +1,25 @@
+<template>
+  <lightning-card title="Parent Component">
+    <div class="slds-m-around_medium slds-m-bottom_">
+      <p>Message from Child: {childMessage}</p>
+
+      <lightning-button
+        label="Send Message"
+        onclick={handleClick}
+      ></lightning-button>
+    </div>
+
+    <!-- Child Component 1 -->
+    <c-child-comp-l-w-c
+      parentmessage={parentMessage}
+      onmessagefromchild={handleMessageFromChild}
+    ></c-child-comp-l-w-c>
+
+    <!-- Child Component 2 -->
+    <c-child-comp2-l-w-c
+      parentmessage={parentMessage}
+      onmessagefromchild2={handleMessageFromChild}
+    >
+    </c-child-comp2-l-w-c>
+  </lightning-card>
+</template>

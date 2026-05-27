@@ -1,0 +1,184 @@
+<template>
+  <lightning-card class="slds-grid slds-grid_align-center slds-wrap">
+    <div
+      class="slds-m-around_large"
+      style="width: 600px; min-width: 450px; max-width: 750px"
+    >
+      <lightning-card title="Student Enrolment Form" style="border: none">
+        <!-- <lightning-button label="New" slot="actions"></lightning-button> -->
+
+        <div class="slds-p-around_medium">
+          <h1 style="background-color: lightgray" class="slds-p-around_small">
+            Student Information
+          </h1>
+
+          <div class="slds-grid slds-wrap slds-m-top_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="text"
+                name="studentFirstName"
+                data-field="studentFirstName"
+                label="First Name"
+                value={enrolmentDetails.studentFirstName}
+                onchange={handleFieldChange}
+                class="slds-m-right_small"
+                required
+              ></lightning-input>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="text"
+                name="studentLastName"
+                data-field="studentLastName"
+                label="Last Name"
+                value={enrolmentDetails.studentLastName}
+                onchange={handleFieldChange}
+                required
+              ></lightning-input>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-wrap slds-m-top_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="number"
+                name="studentPhoneNumber"
+                data-field="studentPhoneNumber"
+                label="Phone Number"
+                value={enrolmentDetails.studentPhoneNumber}
+                onchange={handleFieldChange}
+                class="slds-m-right_small"
+                required
+              ></lightning-input>
+            </div>
+
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="email"
+                name="studentEmail"
+                data-field="studentEmail"
+                label="Email"
+                value={enrolmentDetails.studentEmail}
+                onchange={handleFieldChange}
+                required
+              ></lightning-input>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-wrap slds-m-top_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="date"
+                name="studentDob"
+                data-field="studentDob"
+                label="Date of Birth"
+                value={enrolmentDetails.studentDob}
+                onchange={handleFieldChange}
+                required
+              ></lightning-input>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-wrap slds-m-top_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-textarea
+                name="studentAddress"
+                label="Address"
+                data-field="studentAddress"
+                value={enrolmentDetails.studentAddress}
+                onchange={handleFieldChange}
+                required
+              ></lightning-textarea>
+            </div>
+          </div>
+
+          <h1
+            style="background-color: lightgray; border: radius 5px"
+            class="slds-p-around_small slds-m-top_large"
+          >
+            Course Information
+          </h1>
+
+          <div class="slds-grid slds-wrap slds-m-top_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-combobox
+                name="course"
+                data-field="studentCourseId"
+                label="Select Course"
+                placeholder=""
+                options={courseOptions}
+                onchange={handleSelectChange}
+                class="slds-m-right_small"
+                required
+              ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="text"
+                name="studentCourseDuration"
+                data-field="studentCourseDuration"
+                label="Course Duration"
+                placeholder={courseDuration}
+                class="slds-m-right_small"
+                disabled
+              ></lightning-input>
+            </div>
+          </div>
+
+          <div class="slds-grid slds-wrap slds-m-top_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="date"
+                name="studentEnrolmentDate"
+                data-field="studentEnrolmentDate"
+                label="Enrolment Date"
+                value={enrolmentDetails.studentEnrolmentDate}
+                onchange={handleFieldChange}
+                required
+              ></lightning-input>
+            </div>
+          </div>
+
+          <h1
+            style="background-color: lightgray"
+            class="slds-p-around_small slds-m-top_large"
+          >
+            Unique Student Identifier (USI)
+          </h1>
+          <div class="slds-grid slds-wrap slds-m-top_small">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input
+                type="text"
+                name="studentUSI"
+                data-field="studentUSI"
+                label="Enter Unique Student Identifier (USI)"
+                value={enrolmentDetails.studentUSI}
+                onchange={handleFieldChange}
+                required
+              ></lightning-input>
+            </div>
+          </div>
+        </div>
+
+        <div slot="footer">
+          <!-- Form Buttons -->
+          <div class="slds-m-top_medium slds-grid slds-grid_align-end">
+            <lightning-button
+              label="Reset"
+              variant="brand-outline"
+              class="slds-m-right_x-small"
+              onclick={resetForm}
+            ></lightning-button>
+
+            <lightning-button
+              label="Submit"
+              variant="brand"
+              onclick={handleEnrolmentSubmission}
+            ></lightning-button>
+          </div>
+        </div>
+      </lightning-card>
+    </div>
+  </lightning-card>
+</template>

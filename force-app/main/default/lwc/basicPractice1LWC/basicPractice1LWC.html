@@ -1,0 +1,117 @@
+<template>
+  <lightning-card title="Cars Gallery">
+    <!-- Filter Button -->
+    <lightning-button
+      label="Filter"
+      icon-name="utility:filterList"
+      slot="actions"
+      variant="neutral"
+      class="slds-m-right_x-small"
+      onclick={handleToggleFilter}
+    ></lightning-button>
+
+    <!-- Action Buttons -->
+    <lightning-button-group slot="actions">
+      <lightning-button
+        label="List"
+        onclick={handleShowList}
+      ></lightning-button>
+      <lightning-button
+        label="Tile"
+        onclick={handleShowList}
+      ></lightning-button>
+      <!-- New Car Button  -->
+      <lightning-button
+        label="New"
+        variant="brand"
+        onclick={handleNavigateToPage}
+      >
+      </lightning-button>
+    </lightning-button-group>
+
+    <!-- Filters -->
+    <template if:true={isFilterVisible}>
+      <lightning-card>
+        <p
+          class="slds-m-around_medium slds-p-around_medium"
+          style="border: 1px solid rgb(217, 217, 217); border-radius: 5px"
+        >
+          This is the content area for section D.
+        </p>
+      </lightning-card>
+    </template>
+
+    <!-- Search Bar -->
+    <div class="slds-m-left_medium slds-m-right_medium">
+      <lightning-input
+        type="text"
+        placeholder="Search car by name or body type..."
+        onchange={handleRecordSearch}
+      ></lightning-input>
+    </div>
+
+    <template if:true={showList}>
+      <!-- Data Table of Cars -->
+      <div style="height: 400px" class="slds-m-around_medium">
+        <lightning-datatable
+          key-field="id"
+          data={data}
+          columns={columns}
+          onrowaction={handleRowAction}
+        >
+        </lightning-datatable>
+      </div>
+    </template>
+
+    <template if:false={showList}>
+      <!-- Tiles of Cars -->
+      <div
+        class="slds-grid slds-wrap slds-m-around_small"
+        style="height: 400px; overflow: scroll"
+      >
+        <template for:each={data} for:item="car">
+          <div class="slds-col slds-size_1-of-2" key={car.Id}>
+            <div
+              class="slds-m-around_xx-small"
+              style="border: 1px solid rgb(217, 217, 217); border-radius: 5px"
+            >
+              <lightning-card title={car.Name}>
+                <lightning-button-group slot="actions">
+                  <lightning-button
+                    label="Show details"
+                    name="show_details"
+                    data={car}
+                    onclick={handleTileAction}
+                  ></lightning-button>
+                  <lightning-button
+                    label="Delete"
+                    name="delete"
+                    data={car}
+                    onclick={handleTileAction}
+                  ></lightning-button>
+                </lightning-button-group>
+
+                <p class="slds-p-horizontal_small">
+                  {car.BodyType__c}<br />
+                  {car.Fuel__c}<br />
+                  {car.Transmission__c}<br />
+                  {car.Model_Year__c}<br />
+                  {car.Price__c}
+                </p>
+              </lightning-card>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+
+    <template if:true={selectedCar}>
+      <c-car-details-l-w-c
+        car-id={selectedCar.id}
+        car-name={selectedCar.name}
+        car-price={selectedCar.price__c}
+        car-bodytype={selectedCar.bodytype__c}
+      ></c-car-details-l-w-c>
+    </template>
+  </lightning-card>
+</template>

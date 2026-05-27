@@ -1,0 +1,74 @@
+<template>
+  <lightning-card>
+    <!-- Form -->
+    <!-- Form Inputs  -->
+
+    <lightning-input
+      type="text"
+      name="carName"
+      label="Enter Name"
+      onchange={handleChange}
+      required
+    ></lightning-input>
+
+    <lightning-input
+      type="text"
+      name="carPrice"
+      label="Enter Price"
+      onchange={handleChange}
+      required
+    ></lightning-input>
+
+    <lightning-combobox
+      name="carFuel"
+      label="Select Fuel"
+      placeholder="Select Fuel"
+      value={cFuel}
+      options={fuelOptions}
+      onchange={handleChange}
+    ></lightning-combobox>
+
+    <lightning-combobox
+      name="carTransmission"
+      label="Select Transmission"
+      placeholder="Select Transmission"
+      value={cTransmission}
+      options={transmissionOptions}
+      onchange={handleChange}
+    ></lightning-combobox>
+
+    <lightning-combobox
+      name="carModelYear"
+      label="Select Model Year"
+      placeholder="Select Model Year"
+      value={cModelYear}
+      options={modelYearOptions}
+      onchange={handleChange}
+    ></lightning-combobox>
+
+    <lightning-combobox
+      name="carBodyType"
+      label="Select Body Type"
+      placeholder="Select Body Type"
+      value={cBodyType}
+      options={bodyTypeOptions}
+      onchange={handleChange}
+    ></lightning-combobox>
+
+    <!-- Form Buttons -->
+    <div class="slds-m-around_medium slds-grid slds-grid_align-end">
+      <lightning-button
+        label="Cancel"
+        variant="brand-outline"
+        class="slds-m-right_x-small"
+        onclick={resetForm}
+      ></lightning-button>
+
+      <lightning-button
+        label="Submit"
+        variant="brand"
+        onclick={handleSubmit}
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>

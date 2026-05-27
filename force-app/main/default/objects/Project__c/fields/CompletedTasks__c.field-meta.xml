@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CompletedTasks__c</fullName>
+    <label>Completed Tasks</label>
+    <summaryFilterItems>
+        <field>ProjectTask__c.TaskStatus__c</field>
+        <operation>equals</operation>
+        <value>Completed</value>
+    </summaryFilterItems>
+    <summaryForeignKey>ProjectTask__c.Project__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,40 @@
+<template>
+  <lightning-modal-header label="Car Details"></lightning-modal-header>
+  <lightning-modal-body>
+    <article class="slds-tile">
+      <div class="slds-tile__detail">
+        <dl class="slds-list_horizontal slds-wrap">
+          <dt
+            class="slds-item_label slds-text-color_weak slds-truncate"
+            title="Name"
+          >
+            Car Name:
+          </dt>
+          <dd class="slds-item_detail slds-truncate">{content.Name}</dd>
+          <dt
+            class="slds-item_label slds-text-color_weak slds-truncate"
+            title="Balance"
+          >
+            Car Price:
+          </dt>
+          <dd class="slds-item_detail slds-truncate">
+            <lightning-formatted-number
+              value={content.Price__c}
+              format-style="currency"
+            ></lightning-formatted-number>
+          </dd>
+          <dt
+            class="slds-item_label slds-text-color_weak slds-truncate"
+            title="Name"
+          >
+            Car Body Type:
+          </dt>
+          <dd class="slds-item_detail slds-truncate">{content.BodyType__c}</dd>
+        </dl>
+      </div>
+    </article></lightning-modal-body
+  >
+  <lightning-modal-footer>
+    <lightning-button label="OK" onclick={handleOkay}></lightning-button>
+  </lightning-modal-footer>
+</template>

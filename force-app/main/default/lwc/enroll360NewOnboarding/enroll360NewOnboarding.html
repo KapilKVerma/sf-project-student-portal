@@ -1,0 +1,255 @@
+<template>
+  <lightning-card class="slds-grid slds-grid_align-center slds-wrap">
+    <div
+      class="slds-m-around_large"
+      style="width: 650px; min-width: 450px; max-width: 750px"
+    >
+      <lightning-card title="Onboarding Application">
+        <!-- <lightning-button label="New" slot="actions"></lightning-button> -->
+
+        <div class="slds-m-around_small">
+          <lightning-progress-indicator
+            current-step={formStep}
+            type="base"
+            variant="base"
+            class="slds-m-around_small"
+          >
+            <lightning-progress-step
+              label="Personal Information"
+              value="1"
+            ></lightning-progress-step>
+            <lightning-progress-step
+              label="Course Selection"
+              value="2"
+            ></lightning-progress-step>
+            <lightning-progress-step
+              label="Documents Upload"
+              value="3"
+            ></lightning-progress-step>
+            <lightning-progress-step
+              label="Review & Submit"
+              value="4"
+            ></lightning-progress-step>
+          </lightning-progress-indicator>
+
+          <template if:true={showFormStep1}>
+            <h1 style="background-color: lightgray" class="slds-p-around_small">
+              Student Information
+            </h1>
+
+            <div class="slds-grid slds-wrap slds-m-top_medium">
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                  type="text"
+                  name="firstName"
+                  label="First Name"
+                  onchange={handleChange}
+                  class="slds-m-right_small"
+                  required
+                ></lightning-input>
+              </div>
+
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                  type="text"
+                  name="lastName"
+                  label="Last Name"
+                  onchange={handleChange}
+                  required
+                ></lightning-input>
+              </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-m-top_small">
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                  type="number"
+                  name="phoneNumber"
+                  label="Phone Number"
+                  onchange={handleChange}
+                  class="slds-m-right_small"
+                  required
+                ></lightning-input>
+              </div>
+
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                  type="email"
+                  name="email"
+                  label="Email"
+                  onchange={handleChange}
+                  required
+                ></lightning-input>
+              </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-m-top_small">
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                  type="date"
+                  name="dateOrBirth"
+                  label="Date of Birth"
+                  onchange={handleChange}
+                ></lightning-input>
+              </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-m-top_small">
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-textarea
+                  name="address"
+                  label="Address"
+                  onchange={handleChange}
+                ></lightning-textarea>
+              </div>
+            </div>
+          </template>
+
+          <template if:true={showFormStep2}>
+            <h1 style="background-color: lightgray" class="slds-p-around_small">
+              Course Information
+            </h1>
+
+            <div class="slds-grid slds-wrap slds-m-top_medium">
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-combobox
+                  name="course"
+                  label="Select Course"
+                  placeholder=""
+                  options={courseOptions}
+                  onchange={handleChange}
+                  class="slds-m-right_small"
+                  required
+                ></lightning-combobox>
+              </div>
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-combobox
+                  name="leaveStatus"
+                  label="Select Course Duration"
+                  placeholder=""
+                  options={courseDurations}
+                  onchange={handleChange}
+                  required
+                ></lightning-combobox>
+              </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-m-top_small">
+              <div class="slds-col slds-size_1-of-2">
+                <lightning-input
+                  type="date"
+                  name="enrolmentDate"
+                  label="Enrolment Date"
+                  onchange={handleChange}
+                  required
+                ></lightning-input>
+              </div>
+            </div>
+          </template>
+
+          <template if:true={showFormStep3}>
+            <h1 style="background-color: lightgray" class="slds-p-around_small">
+              Unique Student Identifier (USI)
+            </h1>
+            <div class="slds-grid slds-wrap slds-m-top_medium">
+              <div class="slds-col slds-size_2-of-2">
+                <lightning-input
+                  type="text"
+                  name="studentUSI"
+                  label="Enter Unique Student Identifier (USI)"
+                  onchange={handleChange}
+                  required
+                ></lightning-input>
+              </div>
+            </div>
+          </template>
+
+          <template if:true={showFormStep4}>
+            <h1 style="background-color: lightgray" class="slds-p-around_small">
+              Review Application
+            </h1>
+
+            <div class="slds-m-top_medium">
+              <div>
+                <h1><b>Student Information</b></h1>
+                <p class="slds-m-top_small">{loremIpsum}</p>
+              </div>
+              <hr />
+              <div>
+                <h1><b>Course Details Application</b></h1>
+                <p class="slds-m-top_small">{loremIpsum}</p>
+              </div>
+              <hr />
+              <div>
+                <h1><b>Unique Student Identifier (USI)</b></h1>
+                <p class="slds-m-top_small">{loremIpsum}</p>
+              </div>
+              <hr />
+              <div class="slds-p-around_small">
+                <h1><b>Accept Term & Conditions</b></h1>
+                <lightning-checkbox-group
+                  options={termsConditionsOptions}
+                  value={}
+                  class="slds-p-top_small"
+                  onchange={handleChange}
+                ></lightning-checkbox-group>
+              </div>
+            </div>
+          </template>
+        </div>
+
+        <!-- Footer -->
+        <div slot="footer">
+          <template if:true={previousButton}>
+            <lightning-button
+              label="Previous"
+              variant="brand-outline"
+              class="slds-m-right_x-small"
+              icon-name="utility:chevronleft"
+              onclick={handlePreviousButton}
+            ></lightning-button>
+          </template>
+
+          <template if:true={nextButton}>
+            <lightning-button
+              label="Next"
+              variant="brand-outline"
+              class="slds-m-right_x-small"
+              icon-name="utility:chevronright"
+              icon-position="right"
+              onclick={handleNextButton}
+            ></lightning-button>
+          </template>
+
+          <template if:true={saveExitButton}>
+            <lightning-button
+              label="Save"
+              variant="brand-outline"
+              class="slds-m-right_x-small"
+              icon-name="utility:save"
+              onclick={handleSaveForm}
+            ></lightning-button>
+          </template>
+
+          <template if:true={cancelButton}>
+            <lightning-button
+              label="Cancel"
+              variant="destructive-text"
+              class="slds-m-right_x-small"
+              icon-name="utility:close"
+            ></lightning-button>
+          </template>
+
+          <template if:true={saveButton}>
+            <lightning-button
+              label="Submit"
+              variant="success"
+              icon-name="utility:case"
+              onclick={handleSubmit}
+            ></lightning-button>
+          </template>
+        </div>
+      </lightning-card>
+    </div>
+  </lightning-card>
+</template>
