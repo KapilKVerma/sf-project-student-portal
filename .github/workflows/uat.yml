@@ -1,0 +1,6 @@
+- name: Authenticate UAT Org
+  run: |
+    sf org login access-token \
+      --instance-url ${{ secrets.UAT_INSTANCE_URL }} \
+      --access-token ${{ secrets.UAT_ACCESS_TOKEN }} \
+      --alias uat-org
