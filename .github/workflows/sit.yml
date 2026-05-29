@@ -1,0 +1,6 @@
+- name: Authenticate SIT Org
+  run: |
+    sf org login access-token \
+      --instance-url ${{ secrets.SIT_INSTANCE_URL }} \
+      --access-token ${{ secrets.SIT_ACCESS_TOKEN }} \
+      --alias sit-org
