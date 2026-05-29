@@ -1,0 +1,6 @@
+- name: Authenticate PROD Org
+  run: |
+    sf org login access-token \
+      --instance-url ${{ secrets.PROD_INSTANCE_URL }} \
+      --access-token ${{ secrets.PROD_ACCESS_TOKEN }} \
+      --alias prod-org
